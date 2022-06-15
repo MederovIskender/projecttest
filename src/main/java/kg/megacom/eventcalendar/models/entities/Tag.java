@@ -4,9 +4,7 @@ import kg.megacom.eventcalendar.models.entities.baseEntity.BaseEntity;
 import lombok.*;
 import lombok.experimental.FieldDefaults;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 @Data
 @Builder
@@ -26,4 +24,7 @@ public class Tag extends BaseEntity {
 
     @Column
     boolean is_hidden;
+
+    @ManyToOne(cascade = CascadeType.MERGE)
+    User user;
 }
