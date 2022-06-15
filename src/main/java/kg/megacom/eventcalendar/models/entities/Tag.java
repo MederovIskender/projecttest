@@ -25,6 +25,6 @@ public class Tag extends BaseEntity {
     @Column
     boolean is_hidden;
 
-    @ManyToOne(cascade = CascadeType.MERGE)
+    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.MERGE)
     User user;
 }
