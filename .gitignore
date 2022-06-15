@@ -31,3 +31,6 @@ build/
 
 ### VS Code ###
 .vscode/
+
+### application-dev.properties with personal developer properties (database username, password etc.) ###
+src/main/resources/application-dev.properties
