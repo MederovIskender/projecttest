@@ -9,6 +9,10 @@ import lombok.AllArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Pattern;
+
 // uncomment and refactor all commented code in this method when security for user (UserDetails and UserDetailsService) will be done
 @RestController
 @RequestMapping("/tags")
@@ -35,22 +39,22 @@ public class TagController {
         return this.tagsService.getAllTagsByUserId(1L /*secUser.getUser().getId()*/);
     }
 
-    @PostMapping(value = "/create")
-    public ResponseEntity<?> createNewTag(@RequestBody TagDto tagDto/*, Authentication auth*/){
+    @PostMapping("/create")
+    public ResponseEntity<?> createNewTag(@Valid @RequestBody TagDto tagDto/*, Authentication auth*/){
         /* MySecurityUser secUser = (MySecurityUser) auth.getPrincipal();*/
         testUser.setId(1);
         return this.tagsService.createNewTag(tagDto, testUser/*secUser.getUser()*/);
     }
 
     @DeleteMapping("/delete")
-    public ResponseEntity<?> deleteTagById(@RequestParam Long id/*, Authentication auth*/){
+    public ResponseEntity<?> deleteTagById(@RequestParam @NotNull @Pattern(regexp = "[0-9]+") Long id/*, Authentication auth*/){
         /* MySecurityUser secUser = (MySecurityUser) auth.getPrincipal();*/
         testUser.setId(1);
         return this.tagsService.deleteTagFromDB(id, testUser/*secUser.getUser()*/);
     }
 
     @PutMapping("/{tagId}/update")
-    public ResponseEntity<?> updateTagInfo(@RequestBody TagDto tagDto/*, Authentication auth*/){
+    public ResponseEntity<?> updateTagInfo(@Valid @RequestBody TagDto tagDto/*, Authentication auth*/){
         /* MySecurityUser secUser = (MySecurityUser) auth.getPrincipal();*/
         testUser.setId(1);
         return this.tagsService.changeTagInfo(tagDto, testUser/*secUser.getUser()*/);
