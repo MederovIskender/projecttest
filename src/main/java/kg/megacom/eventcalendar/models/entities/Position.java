@@ -24,5 +24,5 @@ public class Position extends BaseEntity {
     String name;
 
     @ManyToMany
-    List<User> users;
+    List<AppUser> appUsers;
 }

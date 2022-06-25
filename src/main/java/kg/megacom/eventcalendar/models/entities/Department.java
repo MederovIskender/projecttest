@@ -21,11 +21,11 @@ public class Department extends BaseEntity {
     String name;
 
     @ManyToMany
-    List<User> users;
+    List<AppUser> appUsers;
 
     @ManyToOne
     Organization organization;
 
     @ManyToOne
-    User head;
+    AppUser head;
 }

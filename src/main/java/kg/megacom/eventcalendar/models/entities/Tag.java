@@ -26,5 +26,5 @@ public class Tag extends BaseEntity {
     boolean is_hidden;
 
     @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.MERGE)
-    User user;
+    AppUser appUser;
 }

@@ -23,11 +23,11 @@ public class MeetingRegistration extends BaseEntity {
 
     @ManyToOne
     @JoinColumn(name = "user_id")
-    User user;
+    AppUser appUser;
 
     @ManyToOne
     @JoinColumn(name = "delegate_id")
-    User delegate;
+    AppUser delegate;
 
     @Column(name = "user_cancelled")
     boolean user_cancelled;

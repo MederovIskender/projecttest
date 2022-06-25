@@ -23,5 +23,5 @@ public class Organization extends BaseEntity {
     String name;
 
     @ManyToOne
-    User head;
+    AppUser head;
 }

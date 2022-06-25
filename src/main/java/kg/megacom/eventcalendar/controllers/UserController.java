@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.*;
 @RestController
 @RequestMapping("/users")
 @AllArgsConstructor
-public class AppUserController {
+public class UserController {
     private final UserService userService;
 
     @PostMapping("createUser")
@@ -17,8 +17,9 @@ public class AppUserController {
        return userService.saveUser(userCreationDto);
     }
 
+    @GetMapping("getAllUsers")
     public ResponseEntity<?>getAllUsers(){
-        return userService.
+        return userService.getAllUsers();
     }
 
 

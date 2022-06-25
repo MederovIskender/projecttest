@@ -3,7 +3,7 @@ package kg.megacom.eventcalendar.controllers;
 import kg.megacom.eventcalendar.enums.Status;
 import kg.megacom.eventcalendar.enums.UserRole;
 import kg.megacom.eventcalendar.models.dtos.TagDto;
-import kg.megacom.eventcalendar.models.entities.User;
+import kg.megacom.eventcalendar.models.entities.AppUser;
 import kg.megacom.eventcalendar.services.TagsService;
 import lombok.AllArgsConstructor;
 import org.springframework.http.ResponseEntity;
@@ -22,7 +22,7 @@ public class TagController {
     private final TagsService tagsService;
 
     // test user that needs until security for user will be done (as soon as security is done you can easily remove it)
-    private final User testUser = User.builder()
+    private final AppUser testAppUser = AppUser.builder()
             .email("danya1102119@gmail.com")
             .first_name("Данил")
             .last_name("Третьяков")
@@ -42,21 +42,21 @@ public class TagController {
     @PostMapping("/create")
     public ResponseEntity<?> createNewTag(@Valid @RequestBody TagDto tagDto/*, Authentication auth*/){
         /* MySecurityUser secUser = (MySecurityUser) auth.getPrincipal();*/
-        testUser.setId(1);
-        return this.tagsService.createNewTag(tagDto, testUser/*secUser.getUser()*/);
+        testAppUser.setId(1);
+        return this.tagsService.createNewTag(tagDto, testAppUser/*secUser.getUser()*/);
     }
 
     @DeleteMapping("/delete")
     public ResponseEntity<?> deleteTagById(@RequestParam @NotNull @Pattern(regexp = "[0-9]+") Long id/*, Authentication auth*/){
         /* MySecurityUser secUser = (MySecurityUser) auth.getPrincipal();*/
-        testUser.setId(1);
-        return this.tagsService.deleteTagFromDB(id, testUser/*secUser.getUser()*/);
+        testAppUser.setId(1);
+        return this.tagsService.deleteTagFromDB(id, testAppUser/*secUser.getUser()*/);
     }
 
     @PutMapping("/{tagId}/update")
     public ResponseEntity<?> updateTagInfo(@Valid @RequestBody TagDto tagDto/*, Authentication auth*/){
         /* MySecurityUser secUser = (MySecurityUser) auth.getPrincipal();*/
-        testUser.setId(1);
-        return this.tagsService.changeTagInfo(tagDto, testUser/*secUser.getUser()*/);
+        testAppUser.setId(1);
+        return this.tagsService.changeTagInfo(tagDto, testAppUser/*secUser.getUser()*/);
     }
 }

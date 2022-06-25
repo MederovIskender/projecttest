@@ -1,7 +1,6 @@
 package kg.megacom.eventcalendar.models.entities;
 
 import kg.megacom.eventcalendar.enums.InviteStatus;
-import kg.megacom.eventcalendar.models.entities.Meeting;
 import kg.megacom.eventcalendar.models.entities.baseEntity.BaseEntity;
 import lombok.*;
 import lombok.experimental.FieldDefaults;
@@ -22,16 +21,16 @@ public class Invite extends BaseEntity {
     Meeting meeting;
 
     @ManyToOne
-    User sendTo;
+    AppUser sendTo;
 
     @ManyToOne
-    User userFrom;
+    AppUser appUserFrom;
 
     @Enumerated(EnumType.STRING)
     InviteStatus inviteStatus;
 
     @ManyToOne
-    User delegateFrom;
+    AppUser delegateFrom;
 
 
 

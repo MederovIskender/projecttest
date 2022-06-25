@@ -6,7 +6,7 @@ import lombok.*;
 @EqualsAndHashCode
 @NoArgsConstructor
 @AllArgsConstructor
-public class UserRetrievalDto {
+public class UserEntityDto {
         Long id;
         String firstName;
         String lastName;
